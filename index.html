@@ -141,6 +141,91 @@
             .grid-container { grid-template-columns: 1fr; }
             .manual-card { aspect-ratio: auto; }
         }
+
+
+        /* ================= 4. โครงสร้าง Grid 3 คอลัมน์ (กล่องเมนู 6 กล่อง) ================= */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 40px;
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        /* สไตล์กล่องสี่เหลี่ยม ขอบดำหนา มุมมน */
+        .manual-card {
+            background-color: var(--card-bg);
+            border: 3px solid #000000;
+            border-radius: 40px;
+            /* เปลี่ยนจากบังคับสี่เหลี่ยมจัตุรัส เป็นความสูงขั้นต่ำ เพื่อให้กล่องยืดลงมาได้เวลากด */
+            min-height: 250px; 
+            padding: 30px;
+            transition: all 0.3s ease;
+        }
+
+        .manual-card:hover {
+            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            border-color: var(--primary-color);
+        }
+
+        /* ส่วนหัวที่กดได้ */
+        .manual-card summary {
+            list-style: none; /* ซ่อนลูกศรสามเหลี่ยม */
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            height: 100%;
+            outline: none;
+        }
+
+        .manual-card summary::-webkit-details-marker {
+            display: none;
+        }
+
+        .manual-card .header-text {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 10px;
+            color: #000000;
+        }
+
+        .manual-card .body-text {
+            font-size: 16px;
+            color: var(--text-muted);
+        }
+
+        /* ================= สไตล์สำหรับเมนูย่อยที่ซ่อนอยู่ ================= */
+        .hidden-menu {
+            margin-top: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            border-top: 2px dashed #e8eaed; /* เส้นประคั่น */
+            padding-top: 20px;
+        }
+
+        .hidden-menu a {
+            background-color: #f0f4f8;
+            color: var(--primary-color);
+            padding: 12px 15px;
+            border-radius: 10px;
+            text-decoration: none;
+            font-size: 15px;
+            font-weight: 600;
+            text-align: left; /* จัดข้อความชิดซ้าย */
+            transition: all 0.2s ease;
+            display: block;
+        }
+
+        .hidden-menu a:hover {
+            background-color: var(--primary-color);
+            color: white;
+            transform: translateX(5px); /* เวลาชี้ให้ปุ่มขยับไปทางขวานิดนึง */
+        }
     </style>
 </head>
 <body>
@@ -157,36 +242,76 @@
         <p>คลิกเลือกหัวข้อเพื่อรูปภาพที่อยู่ในอีเมลประกาศสำคัญ</p>
     </div>
 
-    <div class="grid-container">
-        <a href="https://drive.google.com/file/d/1Q741xvsxGWIzDlodqWUIcIuYX9ABpvkM/view?usp=drive_link" target="_blank" class="manual-card">
-            <div class="header-text">Company application</div>
-            <div class="body-text">แอปพลิเคชันของบริษัท</div>
-        </a>
+   <div class="grid-container">
+        
+        <details class="manual-card">
+            <summary>
+                <div class="header-text">Motor Claim</div>
+                <div class="body-text">คลิกเพื่อดูเมนูย่อย ⬇️</div>
+            </summary>
+            <div class="hidden-menu">
+                <a href="ใส่ลิงก์ตรงนี้">📄 ขั้นตอนการแจ้งเคลม</a>
+                <a href="ใส่ลิงก์ตรงนี้">📄 การติดตามสถานะซ่อม</a>
+                <a href="ใส่ลิงก์ตรงนี้">📄 รายชื่ออู่ซ่อมในเครือ</a>
+            </div>
+        </details>
 
-        <a href="https://drive.google.com/drive/folders/1xXivaojZxEPgo72lWIB4AxjQlymbVLVE?usp=drive_link" class="manual-card">
-            <div class="header-text">Motor</div>
-            <div class="body-text">ประกันรถยนต์</div>
-        </a>
+        <details class="manual-card">
+            <summary>
+                <div class="header-text">Health Process</div>
+                <div class="body-text">คลิกเพื่อดูเมนูย่อย ⬇️</div>
+            </summary>
+            <div class="hidden-menu">
+                <a href="ใส่ลิงก์ตรงนี้">🏥 ตรวจสอบสิทธิ์ OPD/IPD</a>
+                <a href="ใส่ลิงก์ตรงนี้">📲 วิธีใช้แอปพลิเคชัน Jolly</a>
+            </div>
+        </details>
 
-        <a href="#" class="manual-card">
-            <div class="header-text">Health</div>
-            <div class="body-text">ประกันสุขภาพ</div>
-        </a>
+        <details class="manual-card">
+            <summary>
+                <div class="header-text">Policy Update</div>
+                <div class="body-text">คลิกเพื่อดูเมนูย่อย ⬇️</div>
+            </summary>
+            <div class="hidden-menu">
+                <a href="ใส่ลิงก์ตรงนี้">📝 แก้ไขที่อยู่จัดส่ง</a>
+                <a href="ใส่ลิงก์ตรงนี้">เปลี่ยนชื่อผู้เอาประกันภัย</a>
+            </div>
+        </details>
 
-        <a href="#" class="manual-card">
-            <div class="header-text">Gadget</div>
-            <div class="body-text">บริการอุปกรณ์อิเล็กทรอนิกส์</div>
-        </a>
+        <details class="manual-card">
+            <summary>
+                <div class="header-text">SLA Standards</div>
+                <div class="body-text">คลิกเพื่อดูเมนูย่อย ⬇️</div>
+            </summary>
+            <div class="hidden-menu">
+                <a href="ใส่ลิงก์ตรงนี้">⏱️ ตารางเป้าหมายเวลา</a>
+                <a href="ใส่ลิงก์ตรงนี้">📞 ขั้นตอนรับสายฉุกเฉิน</a>
+            </div>
+        </details>
 
-        <a href="#" class="manual-card">
-            <div class="header-text">Crescent Health</div>
-            <div class="body-text">บริการจัดการสิทธิประโยชน์ด้านการรักษาพยาบาล</div>
-        </a>
+        <details class="manual-card">
+            <summary>
+                <div class="header-text">Tech Support</div>
+                <div class="body-text">คลิกเพื่อดูเมนูย่อย ⬇️</div>
+            </summary>
+            <div class="hidden-menu">
+                <a href="ใส่ลิงก์ตรงนี้">💻 แจ้งระบบขัดข้อง</a>
+                <a href="ใส่ลิงก์ตรงนี้">🔑 ลืมรหัสผ่านเข้าจีสเว็บ</a>
+            </div>
+        </details>
 
-        <a href="#" class="manual-card">
-            <div class="header-text">Work Process</div>
-            <div class="body-text">คการปฏิบัติงาน</div>
-        </a>
+        <details class="manual-card">
+            <summary>
+                <div class="header-text">FAQ Center</div>
+                <div class="body-text">คลิกเพื่อดูเมนูย่อย ⬇️</div>
+            </summary>
+            <div class="hidden-menu">
+                <a href="ใส่ลิงก์ตรงนี้">❓ คำถามเคลมรถยนต์</a>
+                <a href="ใส่ลิงก์ตรงนี้">❓ คำถามประกันสุขภาพ</a>
+                <a href="ใส่ลิงก์ตรงนี้">❓ สคริปต์การตอบกลับ</a>
+            </div>
+        </details>
+
     </div>
 
 </body>
