@@ -1,1 +1,123 @@
-# emailbriefing
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>คู่มือการใช้งาน - CS Knowledge Base</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #1a73e8;
+            --bg-color: #f0f4f8;
+            --card-bg: #ffffff;
+            --text-main: #333333;
+            --text-muted: #5f6368;
+            --sidebar-width: 260px; /* ยืนยันความกว้างเมนูที่ 260px */
+        }
+
+        body {
+            font-family: 'Sarabun', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            line-height: 1.6;
+            margin: 0;
+            /* เว้นระยะซ้ายมือให้พอดีกับแถบเมนู (260px + ระยะขอบอีกนิดหน่อย) */
+            padding: 40px 20px 40px calc(var(--sidebar-width) + 40px); 
+        }
+
+        /* ================= Style สำหรับแถบเมนู (Navbar) ================= */
+        .navbar {
+            background-color: var(--card-bg);
+            box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: var(--sidebar-width);
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            gap: 15px;
+            padding: 30px 20px;
+            z-index: 1000;
+            box-sizing: border-box;
+            overflow-y: auto;   
+        }
+
+        .menu-header {
+            font-size: 2.2em;
+            font-weight: 700;
+            color: var(--primary-color);
+            padding: 0 16px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+        }
+
+        /* สไตล์ตัวอักษรของเมนูที่ปรับปรุงใหม่ */
+        .navbar a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 16px; /* ตัวอักษรขนาดกำลังดี ไม่ใหญ่เกินไป */
+            font-weight: 400; /* ตัวอักษรความหนาปกติ ไม่หนา */
+            padding: 12px 16px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            display: block;
+            line-height: 1.4;
+        }
+
+        /* เอฟเฟคเวลาเอาเมาส์ชี้ */
+        .navbar a:hover {
+            background-color: #f1f3f4;
+            color: var(--primary-color);
+        }
+
+        /* ================= รองรับหน้าจอขนาดเล็ก (มือถือ) ================= */
+        @media (max-width: 768px) {
+            body {
+                padding: 100px 20px 40px 20px;
+            }
+            .navbar {
+                width: 100%;
+                height: auto;
+                flex-direction: row;
+                overflow-x: auto;
+                white-space: nowrap;
+                padding: 15px 20px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="navbar">
+        <div class="menu-header">MENU</div>
+        <a href="https://porpaperclip-lab.github.io/csteamknowledgebase/#">🏠 หน้าแรก</a>
+        <a href="https://porpaperclip-lab.github.io/csteam-trainer/">📊 โครงสร้างผลิตภัณฑ์</a>
+        <a href="#">🛠️ คู่มือการใช้งาน</a>
+    </nav>
+    <div style="max-width: 900px; margin: 0 auto;">
+        
+        <div style="text-align: center; margin-bottom: 40px;">
+            <h1 style="color: var(--primary-color); font-size: 2.5em; font-weight: 700; margin-bottom: 10px;">🛠️ คู่มือการใช้งาน</h1>
+            <p style="color: var(--text-muted); font-size: 1.1em;">รวบรวมขั้นตอนและวิธีการทำงานต่างๆ (User Manual & Workflows)</p>
+        </div>
+
+        <div style="background-color: var(--card-bg); padding: 40px; border-radius: 16px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);">
+            
+            <h2 style="color: var(--text-main); border-bottom: 2px solid #f0f4f8; padding-bottom: 10px; margin-bottom: 20px;">เริ่มเขียนเนื้อหาของคุณที่นี่...</h2>
+            
+            <p style="color: var(--text-muted);">
+                คุณสามารถนำ HTML หรือ Tailwind CSS มาเขียนต่อในส่วนนี้ได้เลยครับ โครงสร้างหน้านี้ถูกตั้งค่าให้สอดคล้องกับหน้าอื่นๆ แล้วครับ
+            </p>
+            
+        </div>
+
+    </div>
+    </body>
+</html>
