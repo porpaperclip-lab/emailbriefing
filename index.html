@@ -3,34 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>อีเมลประกาศสำคัญ (รูป)</title>
+    <title>คู่มือการใช้งาน - CS Knowledge Base</title>
     
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <style>
-        /* ================= 1. ตัวแปรสีและขนาด ================= */
         :root {
             --primary-color: #1a73e8;
             --bg-color: #f0f4f8;
             --card-bg: #ffffff;
             --text-main: #333333;
             --text-muted: #5f6368;
-            --sidebar-width: 260px; /* ความกว้างเมนู 260px ตามที่ต้องการ */
+            --sidebar-width: 260px; /* ยืนยันความกว้าง 260px */
         }
 
         body {
             font-family: 'Sarabun', sans-serif;
             background-color: var(--bg-color);
             color: var(--text-main);
+            line-height: 1.6;
             margin: 0;
-            /* เว้นระยะให้แถบเมนูด้านซ้าย 260px */
-            padding: 60px 40px 60px calc(var(--sidebar-width) + 40px);
-            min-height: 100vh;
+            /* ระยะ Padding ซ้ายต้องเท่ากับหน้า 1 และ 2 (260px + 20px) */
+            padding: 40px 20px 40px calc(var(--sidebar-width) + 20px); 
         }
 
-        /* ================= 2. แถบเมนูด้านซ้าย (Navbar) ================= */
+        /* ================= ปรับ Navbar ให้เหมือนหน้า 1 และ 2 เป๊ะ ================= */
         .navbar {
             background-color: var(--card-bg);
             box-shadow: 2px 0 10px rgba(0,0,0,0.08);
@@ -41,9 +39,12 @@
             height: 100vh;
             display: flex;
             flex-direction: column;
+            justify-content: flex-start;
+            gap: 12px; /* ใช้ gap เท่าหน้า 1 */
             padding: 30px 20px;
-            gap: 15px;
             z-index: 1000;
+            box-sizing: border-box;
+            overflow-y: auto;   
         }
 
         .menu-header {
@@ -58,15 +59,14 @@
         .navbar a {
             color: var(--text-muted);
             text-decoration: none;
-            font-size: 16px; /* ตัวอักษรขนาดพอดี ไม่ใหญ่เกินไป */
-            font-weight: 400; /* ตัวอักษรความหนาปกติ */
+            font-size: 16px; /* ตัวเล็กตามสั่ง */
+            font-weight: 400; /* ไม่หนาตามสั่ง */
             padding: 12px 16px;
-            border-radius: 8px;
+            border-radius: 12px;
             transition: all 0.3s ease;
-            display: flex;
+            display: flex; /* ใช้ flex เพื่อจัดไอคอนให้ตรงกับข้อความ */
             align-items: center;
             gap: 10px;
-            line-height: 1.4;
         }
 
         .navbar a:hover {
@@ -74,15 +74,12 @@
             color: var(--primary-color);
         }
 
-        /* ให้ไอคอน SVG เปลี่ยนสีตามตัวอักษรเวลาชี้ */
-        .navbar a svg {
-            stroke: currentColor;
-        }
+        /* เอาแถบสีฟ้าค้างออก (ยกเลิก .active) ตามที่สั่งไว้ */
 
-        /* ================= 3. ส่วนหัวของเนื้อหา ================= */
+        /* ================= ส่วนเนื้อหา (กล่อง 6 Box) ================= */
         .page-header {
             text-align: center;
-            margin-bottom: 50px;
+            margin-bottom: 40px;
         }
 
         .page-header h1 {
@@ -92,26 +89,19 @@
             margin-bottom: 10px;
         }
 
-        .page-header p {
-            color: var(--text-muted);
-            font-size: 1.1em;
-        }
-
-        /* ================= 4. โครงสร้าง Grid 3 คอลัมน์ (กล่องเมนู 6 กล่อง) ================= */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
-            gap: 40px;
+            gap: 30px;
             max-width: 1000px;
             margin: 0 auto;
         }
 
-        /* สไตล์กล่องสี่เหลี่ยม ขอบดำหนา มุมมน */
         .manual-card {
             background-color: var(--card-bg);
-            border: 3px solid #000000; /* ขอบดำหนา */
-            border-radius: 40px; /* มุมมนมากตามรูป */
-            aspect-ratio: 1 / 1; /* บังคับให้เป็นสี่เหลี่ยมจัตุรัส */
+            border: 3px solid #000000;
+            border-radius: 40px;
+            aspect-ratio: 1 / 1;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -123,10 +113,9 @@
             transition: all 0.3s ease;
         }
 
-        /* เอฟเฟคเวลานำเมาส์ไปชี้ที่กล่อง */
         .manual-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 15px 25px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
             border-color: var(--primary-color);
         }
 
@@ -134,7 +123,7 @@
             font-size: 24px;
             font-weight: 700;
             margin-bottom: 15px;
-            color: #000000;
+            color: #000;
         }
 
         .manual-card .body-text {
@@ -142,32 +131,15 @@
             color: var(--text-muted);
         }
 
-        /* ================= 5. การรองรับหน้าจอขนาดเล็ก (Responsive) ================= */
-        @media (max-width: 1024px) {
-            .grid-container {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-
+        /* รองรับมือถือ */
         @media (max-width: 768px) {
-            body {
-                padding: 100px 20px 40px 20px;
-            }
+            body { padding: 100px 20px 40px 20px; }
             .navbar {
-                width: 100%;
-                height: auto;
-                flex-direction: row;
-                overflow-x: auto;
-                white-space: nowrap;
-                padding: 15px 20px;
+                width: 100%; height: auto; flex-direction: row;
+                overflow-x: auto; padding: 15px 20px;
             }
-            .grid-container {
-                grid-template-columns: 1fr;
-            }
-            .manual-card {
-                aspect-ratio: auto;
-                padding: 40px;
-            }
+            .grid-container { grid-template-columns: 1fr; }
+            .manual-card { aspect-ratio: auto; }
         }
     </style>
 </head>
@@ -175,61 +147,53 @@
 
     <nav class="navbar">
         <div class="menu-header">MENU</div>
-        
-        <a href="https://porpaperclip-lab.github.io/csteamknowledgebase/#">
-            🏠 หน้าแรก
-        </a>
-        
-        <a href="https://porpaperclip-lab.github.io/csteam-trainer/">
-            📊 โครงสร้างผลิตภัณฑ์
-        </a>
-        
+        <a href="https://porpaperclip-lab.github.io/csteamknowledgebase/#">🏠 หน้าแรก</a>
+        <a href="https://porpaperclip-lab.github.io/csteam-trainer/">📊 โครงสร้างผลิตภัณฑ์</a>
         <a href="#">
-            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+            <svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24" style="display: inline-block;">
                 <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
                 <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            อีเมลประกาศสำคัญ
+            คู่มือการใช้งาน
         </a>
     </nav>
 
     <div class="page-header">
-        <h1>📧 คู่มือการใช้งานทีม CS</h1>
-        <p>คลิกเลือกหัวข้อที่ต้องการเพื่ออ่านรายละเอียด</p>
+        <h1>🛠️ คู่มือการใช้งานทีม CS</h1>
+        <p>คลิกเลือกหัวข้อที่ต้องการเพื่อเข้าสู่ระบบคู่มือ</p>
     </div>
 
-   <div class="grid-container">
-        
+    <div class="grid-container">
         <a href="https://www.google.com" target="_blank" class="manual-card">
             <div class="header-text">Motor Claim</div>
-            <div class="body-text">คลิกเพื่อไปยังหน้าคู่มือการเคลมรถยนต์</div>
+            <div class="body-text">คู่มือการแจ้งอุบัติเหตุรถยนต์</div>
         </a>
 
-        <a href="ใส่ลิงก์ตรงนี้" class="manual-card">
+        <a href="#" class="manual-card">
             <div class="header-text">Health Process</div>
-            <div class="body-text">คลิกเพื่อไปยังหน้าคู่มือประกันสุขภาพ</div>
+            <div class="body-text">ขั้นตอนการตรวจสอบสิทธิ์รักษาพยาบาล</div>
         </a>
 
-        <a href="ใส่ลิงก์ตรงนี้" class="manual-card">
-            <div class="header-text">Policy Update</div>
-            <div class="body-text">คลิกเพื่อไปยังหน้าการแก้ไขกรมธรรม์</div>
+        <a href="#" class="manual-card">
+            <div class="header-text">Endorsement</div>
+            <div class="body-text">วิธีการแก้ไขข้อมูลกรมธรรม์</div>
         </a>
 
-        <a href="ใส่ลิงก์ตรงนี้" class="manual-card">
+        <a href="#" class="manual-card">
             <div class="header-text">SLA Standards</div>
-            <div class="body-text">คลิกเพื่อดูตารางมาตรฐานเวลา</div>
+            <div class="body-text">มาตรฐานเวลาการให้บริการ</div>
         </a>
 
-        <a href="ใส่ลิงก์ตรงนี้" class="manual-card">
-            <div class="header-text">Tech Support</div>
-            <div class="body-text">คลิกเพื่อดูวิธีแก้ปัญหาแอปพลิเคชัน</div>
+        <a href="#" class="manual-card">
+            <div class="header-text">Jolly App</div>
+            <div class="body-text">วิธีแก้ปัญหาแอปพลิเคชันเบื้องต้น</div>
         </a>
 
-        <a href="ใส่ลิงก์ตรงนี้" class="manual-card">
-            <div class="header-text">FAQ Center</div>
-            <div class="body-text">คลิกเพื่อดูคำถามที่พบบ่อย</div>
+        <a href="#" class="manual-card">
+            <div class="header-text">CS FAQ</div>
+            <div class="body-text">คำถามที่พบบ่อยและสคริปต์การตอบ</div>
         </a>
-
     </div>
+
 </body>
 </html>
